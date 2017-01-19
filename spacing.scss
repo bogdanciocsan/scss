@@ -1,0 +1,19 @@
+// ----
+// Sass (v3.4.21)
+// Compass (v1.0.3)
+// ----
+
+$column-size: 30px;
+
+@mixin generate-space($prefix, $column-size, $ext-types: "top" "bottom" "right" "left", $ext-names: "desktop" "half" "third" "quarter") {
+  // prefix should be smth like "padding", "margin", "border"
+  @for $i from 1 through length($ext-types) {
+    @each $ext-type in $ext-types { 
+      .#{$prefix}-#{$ext-type}-#{nth($ext-names, $i)} {
+        #{$prefix}-#{$ext-type}: $column-size / $i;
+      }
+    }
+  }
+}
+
+@include generate-space("padding", $column-size);
